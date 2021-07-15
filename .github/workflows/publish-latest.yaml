@@ -9,17 +9,22 @@ jobs:
     name: build latest images for relase
     runs-on: ubuntu-latest
     steps:
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push openvpn image to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          context: .
+          push: true
           tags: avapno/ovpn-admin:openvpn-latest
-          dockerfile:  Dockerfile.openvpn
+          file:  Dockerfile.openvpn
       - name: Push ovpn-admin image to Docker Hub
         uses: docker/build-push-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          context: .
+          push: true
           tags: avapno/ovpn-admin:latest
-          dockerfile: Dockerfile
+          file:  Dockerfile.openvpn
