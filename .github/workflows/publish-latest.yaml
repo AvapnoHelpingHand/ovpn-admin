@@ -14,18 +14,16 @@ jobs:
         with:
           fetch-depth: 0
       - name: Push openvpn image to Docker Hub
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
-          repository: avapno/ovpn-admin
           tags: openvpn-latest
           dockerfile:  Dockerfile.openvpn
       - name: Push ovpn-admin image to Docker Hub
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_PASS }}
-          repository: flant/ovpn-admin
           tags: latest
           dockerfile: Dockerfile
