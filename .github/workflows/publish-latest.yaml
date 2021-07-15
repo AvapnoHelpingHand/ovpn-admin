@@ -18,12 +18,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          tags: openvpn-latest
+          tags: avapno/ovpn-admin:openvpn-latest
           dockerfile:  Dockerfile.openvpn
       - name: Push ovpn-admin image to Docker Hub
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          tags: latest
+          tags: avapno/ovpn-admin:latest
           dockerfile: Dockerfile
