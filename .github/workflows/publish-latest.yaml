@@ -20,11 +20,11 @@ jobs:
           context: .
           push: true
           tags: avapno/ovpn-admin:openvpn-latest
-          file:  Dockerfile.openvpn
+          file:  ./Dockerfile.openvpn
       - name: Push ovpn-admin image to Docker Hub
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
           tags: avapno/ovpn-admin:latest
-          file:  Dockerfile.openvpn
+          file:  ./Dockerfile
