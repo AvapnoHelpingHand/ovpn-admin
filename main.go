@@ -212,7 +212,7 @@ type clientStatus struct {
 
 func (oAdmin *OvpnAdmin) userListHandler(w http.ResponseWriter, r *http.Request) {
 	usersList, _ := json.Marshal(oAdmin.clients)
-	fmt.Fprintf(w, "xyz %s", usersList)
+	fmt.Fprintf(w, "%s", usersList)
 }
 
 func (oAdmin *OvpnAdmin) userStatisticHandler(w http.ResponseWriter, r *http.Request) {
