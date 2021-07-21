@@ -10,7 +10,7 @@ RUN go get -u github.com/gobuffalo/packr/v2/packr2 && cd /app && packr2 && env C
 FROM alpine:3.14
 WORKDIR /app
 COPY --from=backend-builder /app/ovpn-admin /app
-RUN apk add --update bash easy-rsa  && \
+RUN apk add --update bash bind-tools easy-rsa  && \
     ln -s /usr/share/easy-rsa/easyrsa /usr/local/bin && \
     wget https://github.com/pashcovich/openvpn-user/releases/download/v1.0.3-rc.1/openvpn-user-linux-amd64.tar.gz -O - | tar xz -C /usr/local/bin && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
